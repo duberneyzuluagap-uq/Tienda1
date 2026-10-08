@@ -167,7 +167,18 @@ public class Tienda {
                 .collect(Collectors.toList());
     }
 
+    //Punto 4
+    //Obtener las facturas que tengan un cliente donde su nombre empieze por R
 
+    public List<Factura> obtenerFacturassNombre(){
+        List<Factura> facturasClienteR = new ArrayList<>();
+        for (Factura factura: listaFacturas){
+            if (factura.cliente().getNombreCompleto().charAt(0) == 'R'){
+                facturasClienteR.add(factura);
+            }
+        }
+        return facturasClienteR;
+    }
 }
 
 
