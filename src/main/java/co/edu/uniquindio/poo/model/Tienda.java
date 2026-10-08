@@ -1,6 +1,7 @@
 package co.edu.uniquindio.poo.model;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 /* Esta clase representa una tienda
 *
@@ -142,10 +143,16 @@ public class Tienda {
              clienteEncontrado.get().getListaFacturas().forEach(System.out::println);
         }else System.out.println("cliente no encontrado");
     }
-
+    //TALLER
     //1. Obtener los productos con una cantidad disponible mayor o igual a 10
 
-    public List
+    public List<Producto> obtenerProductosMayor10(){
+        return listaProductos.values().stream().
+                filter(producto -> producto.getCantidadDisponible()>=10)
+                .collect(Collectors.toList());
+    }
+
+
 }
 
 
