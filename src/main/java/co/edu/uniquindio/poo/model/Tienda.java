@@ -152,6 +152,12 @@ public class Tienda {
                 .collect(Collectors.toList());
     }
 
+    //2. Obtener los codigos de los productos con una cantidad disponible mayor o igual a 10 y menor que 50
+    public List<String> obtenerCodigoProductoMayor10(){
+        return listaProductos.entrySet().stream().filter(llave->llave.getValue().getCantidadDisponible() >= 10 && llave.getValue().getCantidadDisponible() <=50).map(Map.Entry::getKey).collect(Collectors.toList());
+
+    }
+
 
 }
 
