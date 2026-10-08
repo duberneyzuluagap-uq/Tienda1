@@ -1,5 +1,6 @@
 package co.edu.uniquindio.poo.model;
 
+import java.time.LocalDate;
 import java.util.*;
 import java.util.stream.Collectors;
 
@@ -154,8 +155,16 @@ public class Tienda {
 
     //2. Obtener los codigos de los productos con una cantidad disponible mayor o igual a 10 y menor que 50
     public List<String> obtenerCodigoProductoMayor10(){
-        return listaProductos.entrySet().stream().filter(llave->llave.getValue().getCantidadDisponible() >= 10 && llave.getValue().getCantidadDisponible() <=50).map(Map.Entry::getKey).collect(Collectors.toList());
+        return listaProductos.entrySet().stream().filter(llave->llave.getValue().getCantidadDisponible() >= 10 && llave.getValue().getCantidadDisponible() < 50).map(Map.Entry::getKey).collect(Collectors.toList());
 
+    }
+    //3. Obtener la lista de clientes que hayan comprado el 07 de octubre de 2026
+
+    public List<Cliente> obtenerClientesFechaCompra() {
+        return listaClientes.stream()
+                .filter(cliente -> cliente.getListaFacturas().stream()
+                        .anyMatch(factura -> factura.fecha().isEqual(LocalDate.of(2026, 10, 7))))
+                .collect(Collectors.toList());
     }
 
 
