@@ -242,7 +242,20 @@ public class Tienda {
 
     //punto 9: Implementar un método que retorne todos los productos
     // registrados en la tienda, ordenados de menor a mayor según su precio.
+    public List<Producto> ordenarProductosPorPrecio(){
+        List<Producto> productosOrdenados = new ArrayList<>(listaProductos.values());
 
+        for (int i = 0; i < productosOrdenados.size() - 1; i++) {
+            for (int j = 0; j < productosOrdenados.size() - i - 1; j++) {
+                if (productosOrdenados.get(j).getValor() > productosOrdenados.get(j + 1).getValor()) {
+                    Producto temp = productosOrdenados.get(j);
+                    productosOrdenados.set(j, productosOrdenados.get(j + 1));
+                    productosOrdenados.set(j + 1, temp);
+                }
+            }
+        }
+        return productosOrdenados;
+    }
     //punto 10: Implementar un método que identifique el producto con el precio más alto de la tienda.
     // Si no existen productos registrados, el método debe retornar un Optional vacío.
 
