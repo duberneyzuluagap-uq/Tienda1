@@ -1,5 +1,6 @@
 package co.edu.uniquindio.poo.model;
 
+import javax.swing.*;
 import java.time.LocalDate;
 import java.util.*;
 import java.util.stream.Collectors;
@@ -173,12 +174,49 @@ public class Tienda {
     public List<Factura> obtenerFacturassNombre(){
         List<Factura> facturasClienteR = new ArrayList<>();
         for (Factura factura: listaFacturas){
-            if (factura.cliente().getNombreCompleto().charAt(0) == 'R'){
+            if (factura.cliente().getNombreCompleto().startsWith("R")){
                 facturasClienteR.add(factura);
             }
         }
         return facturasClienteR;
     }
+
+
+    //punto 5: Obtener las facturas donde se haya comprado un celular de marca Iphone 16 pro max
+        public List<Factura> obtenerFacturasIphone16(){
+        List<Factura> facturasIphone = new ArrayList<>();
+        for (Factura f:listaFacturas){
+            for (DetalleFactura detalle:f.listaDetallesFactura()){
+                if (detalle.getProducto().getNombre().equals("Iphone 16")){
+                    facturasIphone.add(f);
+                    break;
+                }
+            }
+        }
+        return facturasIphone;
+    }
+    //punto 6: Obtener las facturas que tenga un cliente
+    // donde su nombre sea juan y haya comprado un celular de marca Iphone 16 pro max
+
+    // Punto 7: Implementar un método que reciba una categoría
+    // y retorne todos los productos registrados que pertenezcan a ella.
+
+    //punto 8 : Implementar un método que reciba un precio mínimo y un precio máximo, y retorne
+    // los productos cuyo precio se encuentre dentro de ese rango, incluyendo ambos límites.
+
+    //punto 9: Implementar un método que retorne todos los productos
+    // registrados en la tienda, ordenados de menor a mayor según su precio.
+
+    //punto 10: Implementar un método que identifique el producto con el precio más alto de la tienda.
+    // Si no existen productos registrados, el método debe retornar un Optional vacío.
+
+    //Punto 11: Implementar un método que reciba el nombre de una ciudad y retorne
+    // todos los clientes que residan en ella.
+    // La búsqueda debe realizarse sin diferenciar entre mayúsculas y minúsculas.
+
+
+
+
 }
 
 
