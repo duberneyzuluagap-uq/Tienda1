@@ -6,16 +6,18 @@ public class Producto {
     private final String descripcion;
     private int cantidadDisponible;
     private final double valor;
+    private final Categoria categoria;
 
     private final Tienda ownedByTienda;
 
-    public Producto(String nombre, String codigo, String descripcion, int cantidadDisponible, double valor, Tienda ownedByTienda) {
+    public Producto(String nombre, String codigo, String descripcion, int cantidadDisponible, double valor, Tienda ownedByTienda,Categoria categoria) {
         this.nombre = nombre;
         this.codigo = codigo;
         this.descripcion = descripcion;
         this.cantidadDisponible = cantidadDisponible;
         this.valor = valor;
         this.ownedByTienda = ownedByTienda;
+        this.categoria = categoria;
     }
 
     public String getNombre() {
@@ -36,6 +38,10 @@ public class Producto {
 
     public double getValor() {
         return valor;
+    }
+
+    public Categoria getCategoria() {
+        return categoria;
     }
 
     public Tienda getOwnedByTienda() {
