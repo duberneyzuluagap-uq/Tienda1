@@ -258,7 +258,21 @@ public class Tienda {
     }
     //punto 10: Implementar un método que identifique el producto con el precio más alto de la tienda.
     // Si no existen productos registrados, el método debe retornar un Optional vacío.
+    public Optional<Producto> identificarProductoMayorPrecio(){
+        if (listaProductos.isEmpty()){
+            return Optional.empty();
+        }
+        Producto productoMayorValor = listaProductos.values().iterator().next();
 
+        for (Producto p:listaProductos.values()){
+            if (p.getValor()>productoMayorValor.getValor()){
+                productoMayorValor = p;
+
+            }
+        }
+        return Optional.of(productoMayorValor);
+
+    }
     //Punto 11: Implementar un método que reciba el nombre de una ciudad y retorne
     // todos los clientes que residan en ella.
     // La búsqueda debe realizarse sin diferenciar entre mayúsculas y minúsculas.
